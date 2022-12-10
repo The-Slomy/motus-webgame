@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mo mo mo... motus</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <div class="screen-layout">
+      <header>
+        <div class="game-logo">
+          <h1>mo</h1>
+          <h1>mo</h1>
+          <h1>mo</h1>
+          <h1>...</h1>
+          <h1>motus</h1>
+        </div>
+      </header>
+      <section class="game-grid">
+        <div class="grid-row"></div>
+        <div class="grid-row"></div>
+        <div class="grid-row"></div>
+        <div class="grid-row"></div>
+        <div class="grid-row"></div>
+        <div class="grid-row"></div>
+      </section>
+      <section class="keyboard-grid">
+        <div class="keyboard-row first-row">
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('a')">
+            a
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('z')">
+            z
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('e')">
+            e
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('r')">
+            r
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('t')">
+            t
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('y')">
+            y
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('u')">
+            u
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('i')">
+            i
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('o')">
+            o
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('p')">
+            p
+          </button>
+        </div>
+        <div class="keyboard-row second-row">
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('q')">
+            q
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('s')">
+            s
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('d')">
+            d
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('f')">
+            f
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('g')">
+            g
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('h')">
+            h
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('j')">
+            j
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('k')">
+            k
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('l')">
+            l
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('m')">
+            m
+          </button>
+        </div>
+        <div class="keyboard-row third-row">
+          <button
+            class="keyboard-btn keyboard-btn-large"
+            onclick="checkWordMatchDigital()"
+          >
+            entrée
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('w')">
+            w
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('x')">
+            x
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('c')">
+            c
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('v')">
+            v
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('b')">
+            b
+          </button>
+          <button class="keyboard-btn" onclick="addDigitalKeyPressed('n')">
+            n
+          </button>
+          <button
+            class="keyboard-btn keyboard-btn-large"
+            onclick="removeLastLetterDigital()"
+          >
+            <span class="material-symbols-outlined"> backspace </span>
+          </button>
+        </div>
+      </section>
+      <footer>
+        <nav class="footer-nav">
+          <ul class="footer-nav-list">
+            <li class="footer-nav-list-item" onclick="togglePopUp()">
+              <span class="material-symbols-outlined"> rule</span>
+              <span class="list-item-text">Règles</span>
+            </li>
+            <li class="footer-nav-list-item" onclick="togglePopUp()">
+              <span class="material-symbols-outlined"> leaderboard </span>
+              <span class="list-item-text">Stats</span>
+            </li>
+            <li class="footer-nav-list-item" onclick="togglePopUp()">
+              <span class="material-symbols-outlined"> settings </span>
+              <span class="list-item-text">Paramètres</span>
+            </li>
+          </ul>
+        </nav>
+      </footer>
+    </div>
+    <section class="pop-up">
+      <div class="pop-up-background" onclick="togglePopUp()"></div>
+      <div class="pop-up-content">
+        <article class="rules-content">
+          <p>Coming soon...</p>
+        </article>
+      </div>
+    </section>
+    <script src="index.js"></script>
+  </body>
+</html>

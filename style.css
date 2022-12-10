@@ -1,0 +1,291 @@
+/* ------- Shared CSS ------- */
+
+:root {
+  /* Grid tile */
+  /* Color */
+  --grid-tile-background: rgba(160, 190, 199, 0.3);
+  --grid-tile-background-light: rgba(160, 190, 199, 0.15);
+  --keyboard-letter-inexistant: rgba(160, 190, 199, 0.5);
+  --grid-tile-color: rgb(61, 61, 61);
+  --grid-tile-color-match: rgba(228, 101, 101, 0.8);
+  --grid-tile-color-exists: rgb(241, 241, 135);
+
+  /* Other styling */
+  --grid-tile-gaps: 10px;
+  --grid-tile-border-radius: 12px;
+  --grid-tile-dimensions: 55px;
+
+  /* Other styling phone */
+  --phone-grid-tile-gaps: 5px;
+  --phone-grid-tile-dimensions: 35px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Secular One", sans-serif;
+}
+
+/* --------- Screen grid ----------- */
+
+.screen-layout {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+}
+
+/* --------- Header ----------- */
+
+header {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;
+  font-size: 1rem;
+}
+
+header .game-logo {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+header .game-logo h1 {
+  padding: 10px;
+  border-radius: var(--grid-tile-border-radius);
+  background-color: var(--grid-tile-background);
+}
+
+header .game-logo h1:nth-child(1) {
+  background-color: var(--grid-tile-color-match);
+}
+
+header .game-logo h1:nth-child(2) {
+  background-color: var(--grid-tile-color-exists);
+}
+
+header .game-logo h1:nth-child(4),
+header .game-logo h1:nth-child(5) {
+  background-color: white;
+  padding: 10px 0px;
+}
+
+header .subtitle {
+  opacity: 0.5;
+}
+
+/* --------- Game grid ----------- */
+
+.game-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 50px;
+}
+
+.grid-row {
+  display: flex;
+}
+
+.grid-row > .grid-tile + .grid-tile {
+  margin-left: var(--grid-tile-gaps);
+}
+
+.grid-tile {
+  height: var(--grid-tile-dimensions);
+  width: var(--grid-tile-dimensions);
+  background-color: var(--grid-tile-background);
+  color: var(--grid-tile-color);
+  border-radius: var(--grid-tile-border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.show-grid-tile-match {
+  background-color: var(--grid-tile-color-match) !important;
+}
+
+.show-grid-tile-exists {
+  background-color: var(--grid-tile-color-exists) !important;
+}
+
+.grid-tile-checked {
+  animation-name: reveal-tile;
+  animation-duration: 0.5s;
+}
+
+@keyframes reveal-tile {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* --------- Keyboard grid ----------- */
+
+.keyboard-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.keyboard-grid > .keyboard-row + .keyboard-row {
+  margin-top: 4px;
+}
+
+.keyboard-row > .keyboard-btn + .keyboard-btn {
+  margin-left: 4px;
+}
+
+.keyboard-grid .keyboard-btn {
+  border: none;
+  border-radius: var(--grid-tile-border-radius);
+  background-color: var(--grid-tile-background-light);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.keyboard-grid .keyboard-btn:hover {
+  filter: brightness(0.8);
+}
+
+.keyboard-grid .keyboard-row {
+  display: flex;
+}
+
+.keyboard-grid .keyboard-btn {
+  display: flex;
+  align-items: center;
+}
+
+.grid-letter-inexistant {
+  background-color: var(--keyboard-letter-inexistant) !important;
+}
+
+/* --------- Footer ----------- */
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px;
+}
+
+footer .footer-nav-list {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+footer .footer-nav-list-item {
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 150px;
+  border-radius: var(--grid-tile-border-radius);
+  cursor: pointer;
+}
+
+footer .footer-nav-list-item:hover {
+  filter: brightness(0.9);
+}
+
+footer .footer-nav-list-item:nth-child(1) {
+  background-color: var(--grid-tile-color-match);
+}
+
+footer .footer-nav-list-item:nth-child(2) {
+  background-color: var(--grid-tile-color-exists);
+}
+
+footer .footer-nav-list-item:nth-child(3) {
+  background-color: var(--grid-tile-background);
+}
+
+/* --------- Pop-up ----------- */
+
+.pop-up-background {
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.15);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.pop-up-content {
+  background-color: white;
+  border-radius: var(--grid-tile-border-radius);
+  width: 300px;
+  height: 300px;
+  z-index: 101;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* -------- Responsive ----------- */
+
+@media (max-width: 600px) {
+  /* Header */
+  header {
+    font-size: 0.8rem;
+  }
+
+  /* Game grid */
+  .grid-tile {
+    height: var(--phone-grid-tile-dimensions);
+    width: var(--phone-grid-tile-dimensions);
+    font-size: 18px;
+  }
+
+  .grid-row > .grid-tile + .grid-tile {
+    margin-left: var(--phone-grid-tile-gaps);
+  }
+
+  /* Keyboard grid */
+
+  .keyboard-grid .keyboard-btn {
+    font-size: 0.8rem;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  /* Footer */
+  footer {
+    font-size: 0.7rem;
+  }
+
+  footer .footer-nav-list-item {
+    width: auto;
+    padding: 10px 20px;
+  }
+
+  footer .footer-nav-list-item .list-item-text {
+    display: none;
+  }
+}
