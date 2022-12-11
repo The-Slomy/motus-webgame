@@ -301,6 +301,46 @@ function togglePopUp() {
     : (document.querySelector(".pop-up").hidden = true);
 }
 
+function openPopup(className) {
+  document.querySelector("." + className).hidden = false;
+  const otherPopups = document.querySelectorAll(
+    "article.pop-up-article:not(." + className
+  );
+  otherPopups.forEach((item) => {
+    item.hidden = true;
+  });
+
+  togglePopUp();
+}
+
+function toggleColorMode() {
+  const colorModeDiv = document.querySelector(".color-mode");
+  const colorModeIcon = document.querySelector(".color-mode-icon");
+  const colorModeText = document.querySelector(".color-mode-text");
+  let iconTextVariable = "light_mode";
+  let divTextVariable = "Mode clair";
+  colorModeIcon.textContent = iconTextVariable;
+  colorModeText.textContent = divTextVariable;
+
+  if (colorModeDiv.classList.contains("light-mode")) {
+    //If light mode on -> swap to dark mode
+    colorModeDiv.classList.remove("light-mode");
+    colorModeDiv.classList.add("dark-mode");
+    iconTextVariable = "dark_mode";
+    divTextVariable = "Mode sombre";
+    colorModeIcon.textContent = iconTextVariable;
+    colorModeText.textContent = divTextVariable;
+  } else {
+    //If dark mode on -> swap to light mode
+    colorModeDiv.classList.remove("dark-mode");
+    colorModeDiv.classList.add("light-mode");
+    iconTextVariable = "light_mode";
+    divTextVariable = "Mode clair";
+    colorModeIcon.textContent = iconTextVariable;
+    colorModeText.textContent = divTextVariable;
+  }
+}
+
 // Screen events
 
 window.addEventListener("keypress", addKeyPressed);
