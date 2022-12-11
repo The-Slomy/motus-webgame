@@ -4,20 +4,52 @@
   /* Grid tile */
   /* Color */
   --grid-tile-background: rgba(160, 190, 199, 0.3);
-  --grid-tile-background-light: rgba(160, 190, 199, 0.15);
-  --keyboard-letter-inexistant: rgba(160, 190, 199, 0.5);
-  --grid-tile-color: rgb(61, 61, 61);
+  --grid-tile-background-light: rgba(160, 190, 199, 0.1);
   --grid-tile-color-match: rgba(228, 101, 101, 0.8);
-  --grid-tile-color-exists: rgb(241, 241, 135);
 
   /* Other styling */
   --grid-tile-gaps: 10px;
   --grid-tile-border-radius: 12px;
   --grid-tile-dimensions: 55px;
 
+  /* Other styling small desktop */
+  --small-grid-tile-gaps: 5px;
+  --small-grid-tile-dimensions: 45px;
+
   /* Other styling phone */
   --phone-grid-tile-gaps: 5px;
   --phone-grid-tile-dimensions: 35px;
+}
+
+/* Handle color mode */
+
+/* Light color scheme */
+:root,
+:root[data-force-color-mode="light"] {
+  color-scheme: light dark;
+  --text-color: #000;
+  --background-color: #fff;
+  --pop-up-background: rgba(0, 0, 0, 0.15);
+  --grid-tile-color: rgb(61, 61, 61);
+  --grid-tile-color-exists: rgb(241, 241, 135);
+}
+
+/* Dark Color Scheme */
+/*@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: rgb(224, 224, 224);
+    --background-color: #333;
+    --pop-up-background: rgba(255, 255, 255, 0.15);
+    --grid-tile-color: rgb(224, 224, 224);
+    --grid-tile-color-exists: rgb(77, 181, 233);
+  }
+} */
+:root[data-force-color-mode="dark"] {
+  --text-color: rgb(224, 224, 224);
+  --background-color: #333;
+  --pop-up-background: rgba(255, 255, 255, 0.15);
+  --grid-tile-color: rgb(224, 224, 224);
+  --grid-tile-color-exists: rgb(77, 181, 233);
 }
 
 * {
@@ -29,6 +61,8 @@
 html {
   font-family: "Secular One", sans-serif;
   overflow-x: hidden;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
 h1,
@@ -85,7 +119,7 @@ header .game-logo h1:nth-child(2) {
 
 header .game-logo h1:nth-child(4),
 header .game-logo h1:nth-child(5) {
-  background-color: white;
+  background-color: var(--background-color);
   padding: 10px 0px;
 }
 
@@ -171,7 +205,8 @@ header .subtitle {
 .keyboard-grid .keyboard-btn {
   border: none;
   border-radius: var(--grid-tile-border-radius);
-  background-color: var(--grid-tile-background-light);
+  background-color: var(--grid-tile-background);
+  color: var(--grid-tile-color);
   text-transform: uppercase;
   font-size: 1.2rem;
   cursor: pointer;
@@ -199,7 +234,7 @@ header .subtitle {
 }
 
 .grid-letter-inexistant {
-  background-color: var(--keyboard-letter-inexistant) !important;
+  background-color: var(--grid-tile-background-light) !important;
 }
 
 /* --------- Footer ----------- */
@@ -247,9 +282,9 @@ footer .footer-nav-list-item:nth-child(3) {
 
 .pop-up-background {
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.15);
-  height: 100vh;
-  width: 100vw;
+  background-color: var(--pop-up-background);
+  height: 100%;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -264,7 +299,7 @@ footer .footer-nav-list-item:nth-child(3) {
   top: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  background-color: white;
+  background-color: var(--background-color);
   border-radius: var(--grid-tile-border-radius);
   width: fit-content;
   min-width: 40vw;
@@ -320,9 +355,10 @@ footer .footer-nav-list-item:nth-child(3) {
   content: "";
   width: 25px;
   height: 25px;
-  display: inline-block;
+  display: block;
   border-radius: 6px;
   margin-right: 8px;
+  flex-shrink: 0;
 }
 
 .pop-up-content .rules-list-item:nth-child(1):before {
@@ -359,6 +395,35 @@ footer .footer-nav-list-item:nth-child(3) {
 
 /* -------- Responsive ----------- */
 
+@media (max-width: 1440px) {
+  /* Game grid */
+  .game-grid {
+    padding-top: 20px;
+  }
+
+  .grid-tile {
+    height: var(--small-grid-tile-dimensions);
+    width: var(--small-grid-tile-dimensions);
+    font-size: 20px;
+  }
+
+  /* Keyboard grid */
+
+  .keyboard-grid {
+    margin-bottom: 0;
+  }
+
+  .keyboard-grid .keyboard-btn {
+    font-size: 0.9rem;
+    padding: 8px;
+    width: 35px;
+  }
+
+  .keyboard-grid .keyboard-btn-large {
+    width: 70px;
+  }
+}
+
 @media (max-width: 600px) {
   /* Header */
   header {
@@ -381,7 +446,6 @@ footer .footer-nav-list-item:nth-child(3) {
   .keyboard-grid .keyboard-btn {
     font-size: 0.8rem;
     padding: 8px;
-    cursor: pointer;
     width: 30px;
   }
 
