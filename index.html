@@ -138,15 +138,24 @@
       <footer>
         <nav class="footer-nav">
           <ul class="footer-nav-list">
-            <li class="footer-nav-list-item" onclick="togglePopUp()">
+            <li
+              class="footer-nav-list-item"
+              onclick="openPopup('rules-content')"
+            >
               <span class="material-symbols-outlined"> rule</span>
               <span class="list-item-text">Règles</span>
             </li>
-            <li class="footer-nav-list-item" onclick="togglePopUp()">
+            <li
+              class="footer-nav-list-item"
+              onclick="openPopup('stats-content')"
+            >
               <span class="material-symbols-outlined"> leaderboard </span>
               <span class="list-item-text">Stats</span>
             </li>
-            <li class="footer-nav-list-item" onclick="togglePopUp()">
+            <li
+              class="footer-nav-list-item"
+              onclick="openPopup('params-content')"
+            >
               <span class="material-symbols-outlined"> settings </span>
               <span class="list-item-text">Paramètres</span>
             </li>
@@ -157,8 +166,52 @@
     <section class="pop-up">
       <div class="pop-up-background" onclick="togglePopUp()"></div>
       <div class="pop-up-content">
-        <article class="rules-content">
+        <article class="pop-up-article rules-content">
+          <div class="pop-up-header">
+            <span class="material-symbols-outlined">rule</span>
+            <h2 class="pop-up-title">Règles</h2>
+          </div>
+
+          <p>
+            Le but du jeu est de trouver le mot caché en 6 essais maximum ! Le
+            mot caché est un mot français présent dans notre dictionnaire.
+          </p>
+          <p>
+            Pour trouver ce mot, vous devez simplement entrer un mot existant
+            dans notre dictionnaire. Si le mot est valide, des indications de
+            couleurs apparaitront :
+          </p>
+          <ul class="rules-list">
+            <li class="rules-list-item">
+              Bravo, vous avez trouvé une bonne lettre bien placée
+            </li>
+            <li class="rules-list-item">
+              Cette lettre existe mais est mal placée
+            </li>
+            <li class="rules-list-item">
+              Cette lettre n'existe pas dans le mot recherché
+            </li>
+          </ul>
+        </article>
+        <article class="pop-up-article stats-content">
+          <div class="pop-up-header">
+            <span class="material-symbols-outlined">leaderboard</span>
+            <h2 class="pop-up-title">Stats</h2>
+          </div>
           <p>Coming soon...</p>
+        </article>
+        <article class="pop-up-article params-content">
+          <div class="pop-up-header">
+            <span class="material-symbols-outlined">settings</span>
+            <h2 class="pop-up-title">Paramètres</h2>
+          </div>
+          <h3>Mode d'affichage</h3>
+          <div class="color-mode light-mode" onclick="toggleColorMode()">
+            <span class="material-symbols-outlined color-mode-icon"
+              >light_mode</span
+            >
+            <span class="color-mode-text">Mode clair</span>
+          </div>
         </article>
       </div>
     </section>
