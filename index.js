@@ -3,6 +3,7 @@
 let randomWord;
 let randomWordArr;
 let txtFileArr;
+let tryCount = 0;
 const gameGrid = document.querySelector(".game-grid");
 const currentWordArr = [];
 
@@ -147,6 +148,8 @@ function checkWordMatchDigital() {
 
 function checkWordMatch(event) {
   if (event.key === "Enter") {
+    //Increment the number of tries
+    tryCount++;
     const currentRow = document.querySelector(
       "div.grid-row:not(.grid-row-disabled"
     );
@@ -233,6 +236,20 @@ function checkEachLetter(wordArrNode) {
       await timer(500);
       wordArrNode[i].classList.remove("grid-tile-checked"); // remove class animating the check to avoid having all letters getting animated later
     }
+    //If word is found, show the stats popup
+    let isWordFound = true;
+    wordArrNode.forEach((item) => {
+      if (!item.classList.contains("grid-tile-match")) {
+        isWordFound = false;
+      }
+    });
+    if (isWordFound) {
+      openPopup("stats-content");
+    }
+    //If try count = 6, show the stats popup
+    if (tryCount === 6) {
+      openPopup("stats-content");
+    }
     // Update the digital keyboard after all letters are checked (so inside the asynch load() fucntion)
     showLettersFoundKeyboard(wordArr, wordArrNode);
   }
@@ -313,6 +330,8 @@ function openPopup(className) {
   togglePopUp();
 }
 
+// Handle color mode
+
 function toggleColorMode() {
   const colorModeDiv = document.querySelector(".color-mode");
   const colorModeIcon = document.querySelector(".color-mode-icon");
@@ -330,6 +349,8 @@ function toggleColorMode() {
     divTextVariable = "Mode sombre";
     colorModeIcon.textContent = iconTextVariable;
     colorModeText.textContent = divTextVariable;
+
+    document.documentElement.setAttribute("data-force-color-mode", "dark");
   } else {
     //If dark mode on -> swap to light mode
     colorModeDiv.classList.remove("dark-mode");
@@ -338,6 +359,8 @@ function toggleColorMode() {
     divTextVariable = "Mode clair";
     colorModeIcon.textContent = iconTextVariable;
     colorModeText.textContent = divTextVariable;
+
+    document.documentElement.setAttribute("data-force-color-mode", "light");
   }
 }
 
