@@ -17,6 +17,8 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+
+    <script src="darkmodeoverride.js"></script>
   </head>
   <body>
     <div class="screen-layout">
@@ -196,9 +198,11 @@
         <article class="pop-up-article stats-content">
           <div class="pop-up-header">
             <span class="material-symbols-outlined">leaderboard</span>
-            <h2 class="pop-up-title">Stats</h2>
+            <h2 class="pop-up-title">Stats du jour</h2>
           </div>
-          <p>Coming soon...</p>
+          <p class="pop-up-stats-text">
+            Vous n'avez pas encore terminé votre partie du jour...
+          </p>
         </article>
         <article class="pop-up-article params-content">
           <div class="pop-up-header">
@@ -206,7 +210,7 @@
             <h2 class="pop-up-title">Paramètres</h2>
           </div>
           <h3>Mode d'affichage</h3>
-          <div class="color-mode light-mode" onclick="toggleColorMode()">
+          <div class="color-mode light-mode">
             <span class="material-symbols-outlined color-mode-icon"
               >light_mode</span
             >
