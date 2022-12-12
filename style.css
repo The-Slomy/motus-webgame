@@ -35,7 +35,7 @@
 }
 
 /* Dark Color Scheme */
-/*@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --text-color: rgb(224, 224, 224);
     --background-color: #333;
@@ -43,7 +43,7 @@
     --grid-tile-color: rgb(224, 224, 224);
     --grid-tile-color-exists: rgb(77, 181, 233);
   }
-} */
+}
 :root[data-force-color-mode="dark"] {
   --text-color: rgb(224, 224, 224);
   --background-color: #333;
