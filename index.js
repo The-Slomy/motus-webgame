@@ -244,11 +244,19 @@ function checkEachLetter(wordArrNode) {
       }
     });
     if (isWordFound) {
-      openPopup("stats-content");
+      //Open and configure pop up success (stats)
+      popUpSuccess();
+      //Set up all grid rows as disabled
+      const gridRowsArrNode = document.querySelectorAll(".grid-row");
+      gridRowsArrNode.forEach((item) => {
+        if (!item.classList.contains("grid-row-disabled")) {
+          item.classList.add("grid-row-disabled");
+        }
+      });
     }
     //If try count = 6, show the stats popup
     if (tryCount === 6) {
-      openPopup("stats-content");
+      popUpFail();
     }
     // Update the digital keyboard after all letters are checked (so inside the asynch load() fucntion)
     showLettersFoundKeyboard(wordArr, wordArrNode);
@@ -312,6 +320,8 @@ function showLettersFoundKeyboard(wordArr, wordArrNode) {
   });
 }
 
+// Pop up function
+
 function togglePopUp() {
   document.querySelector(".pop-up").hidden
     ? (document.querySelector(".pop-up").hidden = false)
@@ -329,6 +339,10 @@ function openPopup(className) {
 
   togglePopUp();
 }
+
+function popUpSuccess() {}
+
+function popUpFail() {}
 
 // Handle color mode
 
