@@ -340,13 +340,40 @@ function openPopup(className) {
   togglePopUp();
 }
 
-function popUpSuccess() {}
+function popUpSuccess() {
+  const popUpStatsContent = document.querySelector(".pop-up-stats-text");
+  tryCount === 1
+    ? (popUpStatsContent.textContent =
+        "Félicitations, vous avez trouvé le mot du jour en " +
+        tryCount +
+        " essai !")
+    : (popUpStatsContent.textContent =
+        "Félicitations, vous avez trouvé le mot du jour en " +
+        tryCount +
+        " essais !");
 
-function popUpFail() {}
+  openPopup("stats-content");
+}
+
+function popUpFail() {
+  const popUpStatsContent = document.querySelector(".pop-up-stats-text");
+  popUpStatsContent.textContent =
+    "Dommage ! Le mot à retrouver était : " + randomWord;
+
+  openPopup("stats-content");
+}
 
 // Handle color mode
 
-function toggleColorMode() {
+function toggleColorMode(mode) {
+  document.documentElement.setAttribute("data-force-color-mode", mode);
+  // Persist in local storage
+  window.localStorage.setItem("color-mode", mode);
+
+  updateColorDiv(mode);
+}
+
+function updateColorDiv(mode) {
   const colorModeDiv = document.querySelector(".color-mode");
   const colorModeIcon = document.querySelector(".color-mode-icon");
   const colorModeText = document.querySelector(".color-mode-text");
@@ -354,8 +381,7 @@ function toggleColorMode() {
   let divTextVariable = "Mode clair";
   colorModeIcon.textContent = iconTextVariable;
   colorModeText.textContent = divTextVariable;
-
-  if (colorModeDiv.classList.contains("light-mode")) {
+  if (mode === "dark") {
     //If light mode on -> swap to dark mode
     colorModeDiv.classList.remove("light-mode");
     colorModeDiv.classList.add("dark-mode");
@@ -363,8 +389,6 @@ function toggleColorMode() {
     divTextVariable = "Mode sombre";
     colorModeIcon.textContent = iconTextVariable;
     colorModeText.textContent = divTextVariable;
-
-    document.documentElement.setAttribute("data-force-color-mode", "dark");
   } else {
     //If dark mode on -> swap to light mode
     colorModeDiv.classList.remove("dark-mode");
@@ -373,10 +397,16 @@ function toggleColorMode() {
     divTextVariable = "Mode clair";
     colorModeIcon.textContent = iconTextVariable;
     colorModeText.textContent = divTextVariable;
-
-    document.documentElement.setAttribute("data-force-color-mode", "light");
   }
 }
+
+document.querySelector(".color-mode").addEventListener("click", () => {
+  toggleColorMode(
+    document.querySelector(".color-mode").classList.contains("light-mode")
+      ? "dark"
+      : "light"
+  );
+});
 
 // Screen events
 
@@ -385,3 +415,4 @@ window.addEventListener("keydown", removeLastLetter);
 window.addEventListener("keydown", checkWordMatch);
 // Hide pop-up
 document.querySelector(".pop-up").hidden = true;
+updateColorDiv(window.localStorage.getItem("color-mode"));
