@@ -293,7 +293,7 @@ footer .footer-nav-list-item:nth-child(3) {
 
 .pop-up-content {
   z-index: 101;
-  position: absolute;
+  position: fixed;
   left: 50%;
   right: 50%;
   top: 50%;
